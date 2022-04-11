@@ -9,6 +9,7 @@ public:
 	Blockchain();
 
 	void addBlock(Block bNew);
+	bool checkChainIntegrity();
 
 private:
 	uint32_t _nDifficulty;

@@ -40,3 +40,10 @@ inline std::string Block::_calculateHash() const {
 }
 
 
+bool Block::checkBlockIntegrity() {
+	// implies all other values are also the same, i.e.
+	// _nIndex, _tTime, _sData, _nNonce, sPrevHash
+	return _sHash == _calculateHash();
+}
+
+

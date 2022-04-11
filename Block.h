@@ -14,6 +14,8 @@ public:
 
 	void mineBlock(uint32_t nDifficulty);
 	
+	bool checkBlockIntegrity();
+	
 private:
 	uint32_t _nIndex;
 	int64_t _nNonce;

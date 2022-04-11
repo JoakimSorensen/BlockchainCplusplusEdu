@@ -13,5 +13,7 @@ int main() {
 	std::cout << "Mining block 3..." << std::endl;
 	bChain.addBlock(Block(3, "Block 3 Data"));
 
+	std::cout << "Chain is secured: " << bChain.checkChainIntegrity() << std::endl;
+
 	return 0;
 }
