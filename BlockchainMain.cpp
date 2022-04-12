@@ -12,14 +12,9 @@ int main() {
 	while (true) {
 		char data[256];
 
-		std::cout << "Enter data for new block: \n('q' to stop)" << std::endl;
+		std::cout << "Enter data for new block: \n('ctrl + c' to stop)" << std::endl;
 		std::cin.getline(data, 256);
 		
-		if (data[0] == 'q') {
-			std::cout << "Shutting down chain..." << std::endl;
-			break;
-		}
-
 		std::string strData(data);
 
 		std::cout << "Mining block " << indexIn << "..." << std::endl;
@@ -28,6 +23,7 @@ int main() {
 		std::cout << boolToString(chainIntegrity) << std::endl;
 		indexIn++;
 	}
+	std::cout << "Shutting down chain..." << std::endl;
 
 	return 0;
 }
