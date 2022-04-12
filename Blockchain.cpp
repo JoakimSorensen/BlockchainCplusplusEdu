@@ -5,10 +5,12 @@ Blockchain::Blockchain() {
 	_nDifficulty = 4;
 }
 
-void Blockchain::addBlock(Block bNew) {
+bool Blockchain::addBlock(uint32_t indexIn, std::string data) {
+	Block bNew = Block(indexIn, data);
 	bNew.sPrevHash = _GetLastBlock().getHash();
 	bNew.mineBlock(_nDifficulty);
 	_vChain.push_back(bNew);
+	return checkChainIntegrity();
 }
 
 Block Blockchain::_GetLastBlock() const {

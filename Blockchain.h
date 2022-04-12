@@ -8,7 +8,7 @@ class Blockchain {
 public:
 	Blockchain();
 
-	void addBlock(Block bNew);
+	bool addBlock(uint32_t indexIn, std::string data);
 	bool checkChainIntegrity();
 
 private:

@@ -1,19 +1,33 @@
 #include "Blockchain.h"
 
+inline const char* boolToString(bool b) {
+	return b ? "Chain validated" : "chain invalid";
+}
+
 int main() {
 	Blockchain bChain = Blockchain();
-
-	std::cout << "Mining block 1..." << std::endl;
-	bChain.addBlock(Block(1, "Block 1 Data"));
-
+	bool chainIntegrity = true;
 	
-	std::cout << "Mining block 2..." << std::endl;
-	bChain.addBlock(Block(2, "Block 2 Data"));
+	uint32_t indexIn = 1;
+	while (true) {
+		char data[256];
 
-	std::cout << "Mining block 3..." << std::endl;
-	bChain.addBlock(Block(3, "Block 3 Data"));
+		std::cout << "Enter data for new block: \n('q' to stop)" << std::endl;
+		std::cin.getline(data, 256);
+		
+		if (data[0] == 'q') {
+			std::cout << "Shutting down chain..." << std::endl;
+			break;
+		}
 
-	std::cout << "Chain is secured: " << bChain.checkChainIntegrity() << std::endl;
+		std::string strData(data);
+
+		std::cout << "Mining block " << indexIn << "..." << std::endl;
+		chainIntegrity = bChain.addBlock(indexIn, strData);
+		
+		std::cout << boolToString(chainIntegrity) << std::endl;
+		indexIn++;
+	}
 
 	return 0;
 }
